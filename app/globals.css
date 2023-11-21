@@ -3,25 +3,69 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #0079dd;
+  --primary-color-light: #019be3;
+  --secondary-color: #00cde9;
+  --primary-gradient: linear-gradient(122deg, #0076dd 0%, #00cde9 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.primary-gradient {
+  background: var(--primary-gradient);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.btn-hover-blue:hover {
+  color: var(--primary-color);
+}
+
+button.primary-btn {
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+button.primary-btn:is(:hover, :focus) {
+  color: white;
+  background-color: var(--primary-color);
+  outline: none;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.primary-color-light {
+  color: var(--primary-color-light);
+}
+
+.bg-primary-color-light {
+  background: var(--primary-color-light);
+}
+
+.bg-primary-color {
+  background: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.shutter-btn {
+  position: absolute;
+  right: -25px;
+  z-index: 999;
+}
+
+.form-bg {
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

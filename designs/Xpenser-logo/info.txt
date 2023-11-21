@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: OverpassMono-Bold
+font link: https://fonts.google.com/specimen/Overpass+Mono
+font author: Delve Withrington
+font author site: https://www.delvefonts.com/
+
+
+icon designer: Yorlmar Campos
+icon designer link: /Yorlmar Campos
+        
+{"icon-gradient-1":"#00CDE9","slogan":"#141414","bg":"transparent","font":"#000000","icon-gradient-0":"#0076DD"}
+      
