@@ -4,17 +4,28 @@ import { BiSolidDashboard, BiSolidBarChartAlt2, BiCalendar } from "react-icons/b
 import { IoReceiptSharp } from "react-icons/io5";
 import { BsCalculatorFill } from "react-icons/bs";
 import { MdFeedback } from "react-icons/md";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import { DashContext } from "../dashboard/page";
+import { TbPigMoney } from "react-icons/tb";
 
 const OptionBtn = ({ Icon, name }) => {
   const [activeComponent, setActiveComponent] = useContext(DashContext);
   const isActive = name === activeComponent;
 
+  useEffect(() => {
+    const storedComponent = localStorage.getItem("activeComponent");
+    if (storedComponent) {
+      setActiveComponent(storedComponent);
+    }
+  }, []);
+
   return (
     <button
-      onClick={() => setActiveComponent(name)}
+      onClick={() => {
+        setActiveComponent(name);
+        localStorage.setItem("activeComponent", name);
+      }}
       className={`flex justify-start items-center font-semibold text-lg btn-hover-blue bg-white rounded-xl px-4 py-3 flex-shrink-0 w-full ${isActive ? "primary-color" : ""}`}
     >
       <span className="text-xl mr-2">
@@ -29,9 +40,19 @@ const OptionBtnCl = ({ Icon, name }) => {
   const [activeComponent, setActiveComponent] = useContext(DashContext);
   const isActive = name === activeComponent;
 
+  useEffect(() => {
+    const storedComponent = localStorage.getItem("activeComponent");
+    if (storedComponent) {
+      setActiveComponent(storedComponent);
+    }
+  }, []);
+
   return (
     <button
-      onClick={() => setActiveComponent(name)}
+      onClick={() => {
+        setActiveComponent(name);
+        localStorage.setItem("activeComponent", name);
+      }}
       className={`flex flex-col justify-center items-center font-semibold text-xs btn-hover-blue bg-white rounded-xl px-4 py-4 w-full ${isActive ? "primary-color" : ""}`}
     >
       <span className={`text-xl`}>
@@ -45,7 +66,7 @@ export default function LeftMenu() {
   const [toggle, setToggle] = useState(true);
 
   return (
-    <div className="w-min h-full relative">
+    <div style={{ height: "calc(100vh - 68px)", position: "sticky", top: "68px", left: "0px" }} className="w-min h-full">
       <button className="absolute top-1/3 shutter-btn" onClick={() => setToggle(!toggle)}>
         {toggle ? (
           <Image src="/assets/Shutter_button-open.svg" height="50" width="50" alt="Xpenser-logo" className="cursor-pointer" />
@@ -60,7 +81,7 @@ export default function LeftMenu() {
           <OptionBtn Icon={BiCalendar} name="Calendar" />
           <OptionBtn Icon={BiSolidBarChartAlt2} name="Reports" />
           <OptionBtn Icon={IoReceiptSharp} name="Receipts" />
-          <OptionBtn Icon={BsCalculatorFill} name="Budget" />
+          <OptionBtn Icon={TbPigMoney} name="Savings" />
           <OptionBtn Icon={MdFeedback} name="Feedback" />
         </div>
       ) : (
@@ -69,7 +90,7 @@ export default function LeftMenu() {
           <OptionBtnCl Icon={BiCalendar} name="Calendar" />
           <OptionBtnCl Icon={BiSolidBarChartAlt2} name="Reports" />
           <OptionBtnCl Icon={IoReceiptSharp} name="Receipts" />
-          <OptionBtnCl Icon={BsCalculatorFill} name="Budget" />
+          <OptionBtnCl Icon={TbPigMoney} name="Savings" />
           <OptionBtnCl Icon={MdFeedback} name="Feedback" />
         </div>
       )}

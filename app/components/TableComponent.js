@@ -1,40 +1,9 @@
 "use client";
 import _ from "lodash";
 
-const tableData = [
-  {
-    amount: 3000,
-    account: "HDFC Credit Card",
-    category: "Entertainment",
-    group: "Loan / EMI",
-    remarks: "Finnable Loan EMI Every 5th of the Month",
-  },
-  {
-    amount: 2000,
-    account: "Axis Credit Card",
-    category: "Entertainment",
-    group: "Loan / EMI",
-    remarks: "Finnable Loan EMI Every 5th of the Month",
-  },
-  {
-    amount: 200,
-    account: "Cash",
-    category: "Entertainment",
-    group: "Loan / EMI",
-    remarks: "Finnable Loan EMI Every 5th of the Month",
-  },
-  {
-    amount: 3000,
-    account: "HDFC Credit Card",
-    category: "Entertainment",
-    group: "Loan / EMI",
-    remarks: "Finnable Loan EMI Every 5th of the Month",
-  },
-];
-
-export default function TableComponent() {
+export default function TableComponent({ tableData }) {
   return (
-    <div className="relative overflow-x-auto">
+    <div className="overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 border px-3 py-2">
         <thead className="text-base text-gray-700 bg-gray-200">
           <tr>
@@ -61,7 +30,7 @@ export default function TableComponent() {
         <tbody className="bg-gray-50">
           {tableData.map((data, index) => (
             <tr key={index} className="font-medium border-b">
-              <th scope="row" className="px-3 py-2 text-gray-900 whitespace-nowrap">
+              <th scope="row" className={`px-3 py-2 whitespace-nowrap ${data.xpense_type === "spent" ? "text-red-600" : "text-green-700"}`}>
                 &#8377; {data.amount.toLocaleString("en-IN")}
               </th>
               <td className="px-3 py-2">{data.account}</td>

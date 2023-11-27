@@ -36,11 +36,11 @@ const ExpenseForm = () => {
           <div className="flex gap-4">
             <span className="flex gap-1">
               <label htmlFor="xpense-type_spent">Spent</label>
-              <input className={`cursor-pointer`} id="xpense-type_spent" {...register("xpense_type", { required: true })} type="radio" value="Spent" />
+              <input className={`cursor-pointer`} id="xpense-type_spent" {...register("xpense_type", { required: true })} type="radio" value="spent" />
             </span>
             <span className="flex gap-1">
               <label htmlFor="xpense-type_received">Received</label>
-              <input className={`cursor-pointer`} id="xpense-type_received" {...register("xpense_type", { required: true })} type="radio" value="Received" />
+              <input className={`cursor-pointer`} id="xpense-type_received" {...register("xpense_type", { required: true })} type="radio" value="received" />
             </span>
           </div>
         </div>

@@ -1,8 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { TableComponent, ExpenseForm, Balance } from "../../components";
+import { DataContext } from "../../dashboard/page";
+import { useContext } from "react";
 
 export default function Dashboard() {
+  const tableData = useContext(DataContext).filter((data) => data.date === "2023-22-11");
   const [isForm, setIsForm] = useState(false);
   const formContainerRef = useRef(null);
 
@@ -23,7 +26,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="flex justify-between h-screen w-full flex-1">
+    <div className="flex justify-between w-full flex-1">
       <div className="flex flex-col px-8 w-max flex-1">
         {/* Heading */}
         <div className="flex justify-between items-start py-6">
@@ -37,7 +40,7 @@ export default function Dashboard() {
 
         {/* Form */}
         {isForm && (
-          <div className="form-bg flex justify-center items-center">
+          <div style={{ zIndex: "99999999" }} className="form-bg flex justify-center items-center">
             <div ref={formContainerRef} className="py-8 px-8 rounded-xl bg-white form-container">
               <h1 className="font-bold text-2xl text-center primary-color mb-6">Add a new Xpense</h1>
               <ExpenseForm />
@@ -47,12 +50,12 @@ export default function Dashboard() {
 
         {/* Table */}
         <div>
-          <TableComponent />
+          <TableComponent tableData={tableData} />
         </div>
       </div>
 
       {/* Balances */}
-      <div className="h-screen overflow-y-hidden">
+      <div style={{ height: "calc(100vh - 68px)" }} className="overflow-y-hidden">
         <Balance />
       </div>
     </div>
